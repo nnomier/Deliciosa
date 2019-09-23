@@ -1,25 +1,54 @@
-var request = require("request");
+//jshint esversion:6
+require('dotenv').config();
+const express = require("express");
+const bodyParser = require("body-parser");
+const request = require("request");
+const ejs = require("ejs");
+const app = express();
 
-var options = {
-  method: 'GET',
-  url: 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/search',
-  qs: {
-    diet: 'vegetarian',
-    excludeIngredients: 'coconut',
-    intolerances: 'egg, gluten',
-    number: '10',
-    offset: '0',
-    type: 'main course',
-    query: 'burger'
-  },
-  headers: {
-    'x-rapidapi-host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com',
-    'x-rapidapi-key': 'SIGN-UP-FOR-KEY'
-  }
-};
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+app.use(express.static("public"));
+app.set('view engine', 'ejs');
 
-request(options, function (error, response, body) {
-	if (error) throw new Error(error);
 
-	console.log(body);
+app.get("/", function(req, res) {
+res.render("home");
+});
+
+app.post("/", function(req, res) {
+  var recipe = req.body.recipe;
+  console.log(recipe);
+
+  var options = {
+    method: 'GET',
+    url: 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/search',
+    qs: {
+      // diet: 'vegetarian',
+      // excludeIngredients: 'coconut',
+      // intolerances: 'egg, gluten',
+      // number: '10',
+      // offset: '0',
+      // type: 'main course',
+      query: recipe
+    },
+    headers: {
+      'x-rapidapi-host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com',
+      'x-rapidapi-key': process.env.API_KEY
+    }
+  };
+
+  request(options, function(error, response, body) {
+    if (error) throw new Error(error);
+    const searchRes=JSON.parse(body).results;
+    console.log(searchRes);
+  });
+});
+
+
+
+
+app.listen(3000, function() {
+  console.log("running on port 3000");
 });

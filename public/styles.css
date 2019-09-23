@@ -5,20 +5,25 @@
 
 body{
   background: url("images/italian.jpg");
-
 }
 
 .navbar{
   opacity: 0.9;
+}
+
+.jumbotron{
+  background-color: #e9ecef17;
+  margin-top: 100;
+  opacity:0.78;
+  padding-top: 3rem ;
+  padding-bottom: 1.8rem;
 
 }
 
+.form-control{
+  border-radius:0.9rem;
+}
 
-
-.jumbotron{
-  margin-top: 100;
-  opacity:0.78;
-      padding-top: 3rem ;
-      padding-bottom: 1.8rem;
-
+.btn{
+  border-radius: 0.9rem;
 }

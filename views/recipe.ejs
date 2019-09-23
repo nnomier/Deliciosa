@@ -1,0 +1,15 @@
+
+  <div >
+    <%recipes.forEach(function(recipe){%>
+      <div class="container-fluid">
+        <div class="title-container container-fluid">
+            <h1><%=recipe.title%></h1>
+        </div>
+
+        <p >
+          <%=recipe.content.substring(0,100)+"..."%>
+      <!--    <a href="/posts/<%=Post._id%>">Read More</a> -->
+        </p>
+      </div>
+    <%})%>
+  </div>
