@@ -5,6 +5,10 @@
 
 body{
   background: url("images/italian.jpg");
+  /*background-color: #f6f6f6;*/
+  background-size: cover;
+
+  background-repeat: no-repeat;
 }
 
 .navbar{
@@ -26,4 +30,12 @@ body{
 
 .btn{
   border-radius: 0.9rem;
+}
+
+.marketing{
+  background-color: #f6f6f6;
+  opacity: 0.74;
+}
+
+.recipe{
 }

@@ -5,7 +5,7 @@ const bodyParser = require("body-parser");
 const request = require("request");
 const ejs = require("ejs");
 const app = express();
-
+  let searchRes=[];
 app.use(bodyParser.urlencoded({
   extended: true
 }));
@@ -14,7 +14,10 @@ app.set('view engine', 'ejs');
 
 
 app.get("/", function(req, res) {
-res.render("home");
+  res.render("home", {
+    searchRes: searchRes
+    });
+    searchRes=[];
 });
 
 app.post("/", function(req, res) {
@@ -25,12 +28,6 @@ app.post("/", function(req, res) {
     method: 'GET',
     url: 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/search',
     qs: {
-      // diet: 'vegetarian',
-      // excludeIngredients: 'coconut',
-      // intolerances: 'egg, gluten',
-      // number: '10',
-      // offset: '0',
-      // type: 'main course',
       query: recipe
     },
     headers: {
@@ -39,10 +36,13 @@ app.post("/", function(req, res) {
     }
   };
 
+
   request(options, function(error, response, body) {
     if (error) throw new Error(error);
-    const searchRes=JSON.parse(body).results;
+     searchRes=JSON.parse(body).results;
     console.log(searchRes);
+    res.redirect("/");
+
   });
 });
 
