@@ -1,0 +1,64 @@
+.search {
+  width: 400px;
+  margin: auto;
+}
+
+body {
+  min-height: 400px;
+  margin-bottom: 100px;
+  clear: both;
+}
+
+.page {
+  background: url("/italian.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.navbar {
+  opacity: 0.9;
+}
+
+.jumbotron {
+  background-color: #e9ecef17;
+  margin-top: 100;
+  opacity: 0.78;
+  padding-top: 3rem;
+  padding-bottom: 1.8rem;
+}
+
+.form-control {
+  border-radius: 0.9rem;
+}
+
+.btn {
+  border-radius: 0.9rem;
+}
+
+
+
+.marketing {
+  background-color: #f6f6f6;
+  opacity: 0.74;
+ }
+
+.footer {
+  text-align: center;
+  bottom: 0;
+  width: 100%;
+  height: 35px;
+  background-color: #f0e3c4;
+  background-attachment: scroll;
+  background-position: 0% 0%;
+  position: fixed;
+  bottom: 0pt;
+  left: 0pt;
+}
+
+.footer a {
+  color: #f7f7f7 !important;
+}
+
+.footer a:hover {
+  color: #ff9c91 !important;
+}

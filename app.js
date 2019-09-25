@@ -14,6 +14,8 @@ app.set('view engine', 'ejs');
 
 
 app.get("/", function(req, res) {
+
+
   res.render("home", {
     searchRes: searchRes
     });
@@ -48,6 +50,41 @@ app.post("/", function(req, res) {
 
 
 
+
+app.get("/recipes/:recipeID", function(req, res){
+
+  const requestedID = req.params.recipeID;
+console.log(requestedID);
+
+
+var options = {
+  method: 'GET',
+  url: 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/'+requestedID+'/information',
+  headers: {
+    'x-rapidapi-host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com',
+    'x-rapidapi-key': '43d388d2bfmsha6de18516b7961fp1389c5jsn6ab3274de6f9'
+  }
+};
+
+request(options, function (error, response, body) {
+  const results = JSON.parse(body);
+  const ingredients = results.extendedIngredients;
+  const servings= results.servings;
+  const directions = results.instructions;
+  const imageURL = results.image;
+const title=results.title;
+
+	if (error) throw new Error(error);
+  res.render("recipe",{
+    ingredients:ingredients,
+    title:title,
+    servings:servings,
+    directions:directions,
+    imageURL:imageURL
+  });
+});
+
+});
 
 app.listen(3000, function() {
   console.log("running on port 3000");

@@ -1,19 +1,53 @@
-  <!-- START THE FEATURETTES -->
+<%- include("partials/header"); -%>
 
-  <hr class="featurette-divider">
+<body>
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+    <a class="navbar-brand" href="#">Deliciosa</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item ">
+          <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+        </li>
 
-  <%searchRes.forEach(function(recipe){%>
-    <div class="row featurette">
-      <div class="col-md-7">
-        <h2 class="featurette-heading"><%=recipe.title%></h2>
-        <p class="lead"><strong>Ready in:</strong> <%= recipe.readyInMinutes%> minutes</p>
-        <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
+      </ul>
 
-      </div>
-      <div class="col-md-5">
-        <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" src="https://spoonacular.com/recipeImages/<%=recipe.image%>" >
-      </div>
     </div>
+  </nav>
+<hr class="featurette-divider">
+<div class="row featurette" style="
+    margin-left: 50px;
+">
+  <div class="col-md-7">
+    <h2 class="featurette-heading display-4 font-italic"><%=title%> </h2>
+    <h2><span class="text-muted">Servings: <%=servings%> </span></h2>
+    <h2>
+      <hr>
+      <strong>Ingredients:</strong>
 
-    <hr class="featurette-divider">
-<%})%>
+    </h2>
+    <ul class="list-group list-group-flush">
+      <% ingredients.forEach(function(ingredient){%>
+      <li class="list-group-item"><%=ingredient.originalString%></li>
+
+      <%})%>
+    </ul>
+  </div>
+  <div class="col-md-5">
+    <img src="<%=imageURL%>" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" <rect width="100%" height="100%" fill="#eee"></rect>>
+  </div>
+</div>
+<hr class="featurette-divider">
+<div class="row featurette" style="
+    margin-left: 50px;
+">
+  <div class="col-md-7">
+    <h2 class="featurette-heading">Instuctions:
+    </h2>
+    <p class="lead"> <%=directions%> </p>
+  </div>
+</div>
+
+<%- include("partials/footer"); -%>
