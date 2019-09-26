@@ -1,5 +1,8 @@
 //jshint esversion:6
+<<<<<<< HEAD
 require('dotenv').config();
+=======
+>>>>>>> fix issues
 const express = require("express");
 const bodyParser = require("body-parser");
 const request = require("request");
@@ -34,11 +37,18 @@ app.post("/", function(req, res) {
     },
     headers: {
       'x-rapidapi-host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com',
+<<<<<<< HEAD
       'x-rapidapi-key': process.env.API_KEY
     }
   };
 
 
+=======
+      'x-rapidapi-key':  "43d388d2bfmsha6de18516b7961fp1389c5jsn6ab3274de6f9"
+    }
+  };
+
+>>>>>>> fix issues
   request(options, function(error, response, body) {
     if (error) throw new Error(error);
      searchRes=JSON.parse(body).results;
@@ -48,9 +58,12 @@ app.post("/", function(req, res) {
   });
 });
 
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> fix issues
 app.get("/recipes/:recipeID", function(req, res){
 
   const requestedID = req.params.recipeID;
